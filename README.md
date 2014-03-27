@@ -1,9 +1,10 @@
-all_projects
+ABOUT THIS REPO
 ============
 Manan Shah
 201 S 4th St #414, San Jose, CA 95112
 Cell: (408) - 207 - 2723 | Email: mshah1819@gmail.com| LinkedIn: www.linkedin.com/in/mshah18
 
+This files has different projects involved in it that I did in last few years
 PROJECTS:
 
 •	University Recommendation System – an Open API system
