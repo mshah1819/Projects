@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <button id ="back" class="btn btn-inverse">Back</button>
+</div>
+<br></br>
+<br></br>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12"  id ="cases-table">
+			<table class="table table-hover table-bordered" id = "table">
+				<thead>
+					<tr class="error">
+						<th>
+							Case Number
+						</th>
+						<th>
+							Case Escalation
+						</th>
+						<th>
+							Case Synopsis
+						</th>
+						<th>
+							Case Created Date
+						</th>
+						<th>
+							Contact Name
+						</th>
+						<th>
+							Contact Email
+						</th>
+						<th>
+							Priority
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each CUSTOMERINFO}}
+						{{#if caseNumber}}
+							<tr class="success">
+								<td>
+									{{caseNumber}}
+								</td>
+								<td>
+									{{caseEscalation}}
+								</td>
+								<td>
+									{{caseSynopsis}}
+								</td>
+								<td>
+									{{caseCreatedDate}}
+								</td>
+								<td>
+									{{contactName}}
+								</td>
+								<td>
+									{{contactEmail}}
+								</td>
+								<td>
+									{{priority}}
+								</td>
+							</tr>
+						{{/if}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

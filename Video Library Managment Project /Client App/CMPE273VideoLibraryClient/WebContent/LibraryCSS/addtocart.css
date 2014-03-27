@@ -1,0 +1,32 @@
+
+
+
+
+th {
+  font: bold 11px “Trebuchet MS”, Verdana, Arial, Helvetica, sans-serif;
+  color: #4f6b72;
+  border-right: 1px solid #C1DAD7;
+  border-bottom: 1px solid #C1DAD7;
+  border-top: 1px solid #C1DAD7;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 6px 6px 6px 12px;
+  background: #CAE8EA url(../LibraryIMG/gray-circles.jpg) no-repeat;
+}
+
+
+
+
+
+
+
+tbody th{
+  font: bold 10px “Trebuchet MS”, Verdana, Arial, Helvetica, sans-serif;
+  border-left: 1px solid #C1DAD7;
+  border-top: 0; 
+  font: bold;
+ 
+  text-align: center;
+}
+

@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//src/model/Address.java=UTF-8
+encoding//src/model/BillingHistory.java=UTF-8
+encoding//src/model/City.java=UTF-8
+encoding//src/model/Country.java=UTF-8
+encoding//src/model/Movie.java=UTF-8
+encoding//src/model/MovieCart.java=UTF-8
+encoding//src/model/MovieCategory.java=UTF-8
+encoding//src/model/Payment.java=UTF-8
+encoding//src/model/Preference.java=UTF-8
+encoding//src/model/State.java=UTF-8
+encoding//src/model/Status.java=UTF-8
+encoding//src/model/User.java=UTF-8
+encoding//src/services/Service.java=UTF-8
+encoding//src/services/ServiceService.java=UTF-8
+encoding//src/services/ServiceServiceLocator.java=UTF-8
+encoding//src/services/ServiceSoapBindingStub.java=UTF-8

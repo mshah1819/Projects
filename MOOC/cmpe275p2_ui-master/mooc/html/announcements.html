@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CMPE 275 Project 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/assets/ico/favicon.png">
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#"><font color="white" size="2.5pt">Welcome {{ fName }} {{ lName }} [Mooc: {{selectedMooc}}]</font></a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a href="/mooc/home/">Home</a></li>
+                        <li><a href="/mooc/list_category/">Categories</a></li>
+                        <li><a href="/mooc/list_course/">Courses</a></li>
+                        <li><a href="/mooc/list_discussion/">Discussions</a></li>
+                        <li><a href="/mooc/list_announcement/">Announcements</a></li>
+                        <li><a href="/mooc/list_quiz/">Quizzes</a></li>
+                        <li class="dropdown">
+                            {% if latest_mooc_list %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MOOCS<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                {% for mooc in latest_mooc_list %}
+                                            <li><a href="/mooc/home/?id={{ mooc.id }}">{{ mooc.group }}</a></li>
+            				{% endfor %}
+                                    </ul>
+                            {% else %}
+                                <p>No moocs registered.</p>
+                            {% endif %}
+                        </li>
+                        <li><a href="/mooc/profile/">Profile</a></li>
+                        <li><a href="/mooc/logout/">Logout</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container -->
+        </div><!--/.navbar-inner -->
+    </div><!--/.navbar -->
+
+    <div class="container">
+        <div class="row">
+            <div class="text-left">
+                <a href="/mooc/announcement/"><button class="btn btn-primary" type="button"><b class="icon-plus-sign"></b> Add Announcement</button></a>
+            </div>
+            <div class="text-right">
+                <form class="form-horizontal" action="/mooc/list_announcement/" method="POST">
+                    <select name="courseId" class="span3">
+                        <option value="-1">All</option>
+                        {% for courseItem in course_list %}
+                            {% if courseItem.id == course_id %}
+                                <option value="{{courseItem.id}}" selected>{{courseItem.title}}</option>
+                            {% else %}
+                                <option value="{{courseItem.id}}">{{courseItem.title}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <button class="btn" type="submit"><b class="icon-filter"></b></button>
+                </form>
+            </div>
+        </div>
+        <div class=row>
+        <h5>{{message}}</h5>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                      	<th style="width: 2%;">No.</th>
+                      	<th style="width: 80%;">Title</th>
+                      	<th style="width: 18%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if course_id %}
+                    {% for announcement in announcement_list %}
+                        {% if announcement.courseId == course_id %}
+                            <tr>
+                     		<td>{{forloop.counter}}</td>
+                        		<td><a href="/mooc/get_announcement/?id={{announcement.id}}">{{announcement.title}}</a></td>
+                        		<td><a href="/mooc/edit_announcement/?id={{announcement.id}}"><button class="btn btn-mini" type="button"><i class="icon-pencil"></i> Edit</button></a>
+                                  &nbsp;&nbsp;<a href="/mooc/remove_announcement/?id={{announcement.id}}"><button class="btn btn-mini" type="button"><i class="icon-remove-sign"></i> Delete</button></a>
+                        		</td>
+                        	   </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for announcement in announcement_list %}
+                        <tr>
+                 		  <td>{{forloop.counter}}</td>
+                		  <td><a href="/mooc/get_announcement/?id={{announcement.id}}">{{announcement.title}}</a></td>
+                		  <td><a href="/mooc/edit_announcement/?id={{announcement.id}}"><button class="btn btn-mini" type="button"><i class="icon-pencil"></i> Edit</button></a>
+                              &nbsp;&nbsp;<a href="/mooc/remove_announcement/?id={{announcement.id}}"><button class="btn btn-mini" type="button"><i class="icon-remove-sign"></i> Delete</button></a>
+                		  </td>
+                 	      </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+        	 </table>
+        </div>
+        <hr>
+        <footer>
+            <p>&copy; Annonymous Group 2013</p>
+        </footer>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/bootstrap-transition.js"></script>
+    <script src="/assets/js/bootstrap-alert.js"></script>
+    <script src="/assets/js/bootstrap-modal.js"></script>
+    <script src="/assets/js/bootstrap-dropdown.js"></script>
+    <script src="/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="/assets/js/bootstrap-tab.js"></script>
+    <script src="/assets/js/bootstrap-tooltip.js"></script>
+    <script src="/assets/js/bootstrap-popover.js"></script>
+    <script src="/assets/js/bootstrap-button.js"></script>
+    <script src="/assets/js/bootstrap-collapse.js"></script>
+    <script src="/assets/js/bootstrap-carousel.js"></script>
+    <script src="/assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

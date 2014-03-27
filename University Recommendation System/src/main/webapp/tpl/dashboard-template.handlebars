@@ -1,0 +1,164 @@
+<div class="modal-header">
+    <button id ="back" class="btn btn-inverse">Back</button>
+</div>
+
+<div class="container-fluid span54">
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="row-fluid">
+				<div class="span1 offset1" id="cases-box">
+			   		<ol class="span1" id="selectable-boxes">
+			   			<h3> C A S E S </h3>
+						{{#each DASHBOARDINFO}}
+							{{#if priority1}}
+								  <li class="ui-state-default">
+								  <br></br>{{#if priority1}} Priority-1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{priority1}} {{/if}}
+								  <br></br>{{#if priority2}} Priority-2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{priority2}} {{/if}}
+								  <br></br>{{#if escalations}} Total # of Escalations  &nbsp; &nbsp;  {{escalations}} {{/if}}
+								  <br></br><button type="submit" id = "cases-btn" class="btn btn-success confirm span3">More Info</button>
+								  </li>
+							{{/if}}
+						{{/each}}
+					</ol>
+				</div>  
+					
+				<div class="span4 offset5" id="installbase-box">
+			      	<ol class="span1" id="selectable-boxes">
+			   			<h3> I N S T A L L B A S E </h3>
+						{{#each DASHBOARDINFO}}
+							{{#if installCount}}
+								  <li class="ui-state-default">
+								  <br></br>{{#if installCount}} Install Count &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{installCount}} {{/if}}
+								  <br></br>{{#if installQuantity}} Install Quantity &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{installQuantity}} {{/if}}
+								  <br></br>{{#if installLocations}} Total Install Locations  &nbsp; &nbsp;  {{installLocations}} {{/if}}
+								  <br></br><button type="submit" id = "installbase-btn" class="btn btn-success confirm span3">More Info</button>
+								  </li>
+							{{/if}}
+						{{/each}}
+					</ol>
+				</div>	
+			</div>
+			
+			<br></br>
+			
+			
+			<div class="row-fluid">
+				<div class="span1 offset1" id="contracts-box">
+			   		<ol class="span1" id="selectable-boxes">
+			   			<h3> C O N T R A C T S </h3>
+						{{#each DASHBOARDINFO}}
+							{{#if contractIdCount}}
+								  <li class="ui-state-default">
+								  <br></br>{{#if contractIdCount}} Total # of Contract ID's &nbsp; &nbsp; &nbsp; &nbsp; {{contractIdCount}} {{/if}}
+								  <br></br>{{#if contractCount}} Total # of Contracts &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{contractCount}} {{/if}}
+								  <br></br>{{#if contractLocation}} Total Contract Locations  &nbsp; &nbsp;  {{contractLocation}} {{/if}}
+								  <br></br><button type="submit" id = "contracts-btn" class="btn btn-success confirm span3" align = 'right'>More Info</button>
+								  </li>
+							{{/if}}
+						{{/each}}
+					</ol>
+				</div>  
+				
+				<div class="span4 offset5" id="site-box">
+			      	<ol class="span1" id="selectable-boxes">
+			   			<h3> L O C A T I O N S </h3>
+						{{#each DASHBOARDINFO}}
+							{{#if siteCount}}
+								  <li class="ui-state-default">
+								  <br></br>{{#if siteCount}} Total Company Locations &nbsp; &nbsp; &nbsp; &nbsp; {{siteCount}} {{/if}}
+								  <br></br>{{#if customerName}} Company &nbsp; &nbsp; &nbsp; &nbsp;  {{customerName}} {{/if}}
+								  <br></br>{{#if customerId}} Company Id &nbsp; &nbsp;  {{customerId}} {{/if}}
+								  <br></br><button type="submit" id = "site-btn" class="btn btn-success confirm span3">More Info</button>
+								  </li>
+							{{/if}}
+						{{/each}}
+					</ol>
+				</div>	    	  
+			</div>
+		</div>
+		
+		<div class="span6">
+			<div id="tabs" class ="span11 well whitebg">
+				<ul>
+					<li><a href="#tabs-1" title = "Financial Data Info">CUSTOMER INFO</a></li>
+					<li><a href="#tabs-2" title = "Contact List">KEY CONTACTS</a></li>
+				</ul>
+				<div id="tabs-1">
+					{{#each DASHBOARDINFO}}
+						{{#if customerName}}
+							<p> 
+								Customer - {{customerName}} <a class="span6 pull-right" style="text-align:right"> &#64; Powered By YAHOO FINANCE API </a>
+							</p>
+						{{/if}}
+					{{/each}}
+					
+					{{#each YAHOOAPIINFO}}
+						{{#if ServerDown}}
+							<br></br>
+							<br></br>
+							<br></br>
+							<div class = "error">
+							<P> THE YAHOO FINANCE SERVER IS PRESENTLY DOWN</p>
+							</div>
+						{{/if}}
+					{{/each}}
+					
+					{{#each YAHOOAPIINFO}}
+						{{#if InternetProblem}}
+							<br></br>
+							<br></br>
+							<br></br>
+							<div class = "error">
+								INTERNET CONNECTION NOT AVAILABLE! TO DISPLAY YAHOO FINANCE SERVICES
+							</div>
+						{{/if}}
+					{{/each}}
+					
+					{{#each YAHOOAPIINFO}}
+						{{#if symbol}}
+							<h2> &nbsp; ({{symbol}}) </h2>
+						{{/if}}
+					{{/each}}
+					
+					
+					<ol id="selectable" >
+					{{#each YAHOOAPIINFO}}
+						{{#if OperatingMargin}}
+						  	<li class="ui-state-default"><br></br>Operating Margin <br></br> {{OperatingMargin}} </li>
+						  	<li class="ui-state-default"><br></br> Profit Margin <br></br> {{ProfitMargin}} </li>
+						  	<li class="ui-state-default"><br></br> EBITDA <br></br> {{EBITDA}}</li>	
+						
+						  	<li class="ui-state-default"><br></br> Return On Assets <br></br> {{ReturnonAssets}}</li>
+						  	<li class="ui-state-default"><br></br> Return On Equity <br></br> {{ReturnonEquity}}</li>
+						  	<li class="ui-state-default"><br></br> Revenue <br></br> {{Revenue}}</li>
+						 {{/if}} 
+					  {{/each}}
+					</ol>			
+				</div>
+				
+				<div id="tabs-2">
+					<div id="contact-list">
+						<ol class="span1" id="contact-list-boxes">
+			   				{{#each CUSTOMERINFO}}
+    					 		{{#if name}}
+									<li class="ui-state-default">
+										<img src ="img/{{image}}.png"  height="150" width="150">
+										<br></br>Name: &nbsp; &nbsp;  {{name}}
+										<br></br>Email: &nbsp; &nbsp; {{email}}
+								  	</li>
+								{{/if}}
+							{{/each}}
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br></br>
+<br></br>
+<div class="carousel-caption">	
+	<img src ="img/customer360.png">
+</div>
+

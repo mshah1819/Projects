@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CMPE 275 Project 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/assets/ico/favicon.png">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#"><font color="white" size="2.5pt">Welcome {{ fName }} {{ lName }} [Mooc: {{selectedMooc}}]</font></a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li><a href="/mooc/home/">Home</a></li>
+                        <li><a href="/mooc/list_category/">Categories</a></li>
+                        <li><a href="/mooc/list_course/">Courses</a></li>
+                        <li class="active"><a href="/mooc/list_discussion/">Discussions</a></li>
+                        <li><a href="/mooc/list_announcement/">Announcements</a></li>
+                        <li><a href="/mooc/list_quiz/">Quizzes</a></li>
+                        <li class="dropdown">
+                            {% if latest_mooc_list %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MOOCS<b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                {% for mooc in latest_mooc_list %}
+                                            <li><a href="/mooc/home/?id={{ mooc.id }}">{{ mooc.group }}</a></li>
+            				{% endfor %}
+                                    </ul>
+                            {% else %}
+                                <p>No moocs registered.</p>
+                            {% endif %}
+                        </li>
+                        <li><a href="/mooc/profile/">Profile</a></li>
+                        <li><a href="/mooc/logout/">Logout</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container -->
+        </div><!--/.navbar-inner -->
+    </div><!--/.navbar -->
+
+    <div class="container">
+        <div class="row">
+            {% if message %}
+                <span class="label label-important">{{message}}</span>
+            {% endif %}
+        </div>
+        <div class=row>
+	      <form name="CategoryForm" class="form-signin" action="/mooc/update_discussion/" method="POST">
+                <h2 class="form-signin-heading">Discussion</h2>
+                 <input type="hidden" name="discId" value="{{id}}">
+                <input type="hidden" name="created_by" value="{{created_by}}">
+                <input type="hidden" name="created_at" value="{{created_at}}">
+                <input type="hidden" name="courseId" value="{{course_id}}">
+                <label class="control-label" for="textarea">Title</label>  
+                <input type="text" class="input-block-level" placeholder="Discussion Title" name="discTitle" value="{{title}}">
+                <label class="control-label" for="textarea">Course Name</label>  
+                <input type="text" class="input-block-level" disabled="disabled" placeholder="Discussion Course" name="discCourse" value="{{courseTitle}}">
+                <button class="btn btn-primary" type="submit">Update</button>&nbsp;&nbsp;
+                <a href="/mooc/list_discussion/"><button class="btn" type="button">Cancel</button></a>
+            </form>
+        </div>
+        <hr>
+        <footer>
+            <p>&copy; Annonymous Group 2013</p>
+        </footer>
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/bootstrap-transition.js"></script>
+    <script src="/assets/js/bootstrap-alert.js"></script>
+    <script src="/assets/js/bootstrap-modal.js"></script>
+    <script src="/assets/js/bootstrap-dropdown.js"></script>
+    <script src="/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="/assets/js/bootstrap-tab.js"></script>
+    <script src="/assets/js/bootstrap-tooltip.js"></script>
+    <script src="/assets/js/bootstrap-popover.js"></script>
+    <script src="/assets/js/bootstrap-button.js"></script>
+    <script src="/assets/js/bootstrap-collapse.js"></script>
+    <script src="/assets/js/bootstrap-carousel.js"></script>
+    <script src="/assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

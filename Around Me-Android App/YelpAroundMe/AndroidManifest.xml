@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sjsu.yelpSearch"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.D1" >
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/app_name" >
+
+            <!--
+         <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+         </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".F1Activity"
+            android:label="@string/title_feature1"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F2Activity"
+            android:label="@string/title_feature2"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F3Activity"
+            android:label="@string/title_feature3"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F4Activity"
+            android:label="@string/title_feature4"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F5Activity"
+            android:label="@string/title_feature5"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F6Activity"
+            android:label="@string/title_feature6"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F7Activity"
+            android:label="@string/title_feature7"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F8Activity"
+            android:label="@string/title_feature8"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F9Activity"
+            android:label="@string/title_feature9"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F10Activity"
+            android:label="@string/title_feature10"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F11Activity"
+            android:label="@string/title_feature11"
+            android:theme="@style/Theme.D1" />
+        <activity
+            android:name=".F12Activity"
+            android:label="@string/title_feature12"
+            android:theme="@style/Theme.D1" />        
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_about"
+            android:theme="@style/Theme.D1" />
+        <activity android:name="com.sjsu.yelpSearch.BusinessesActivity" />
+        <activity
+            android:name="com.sjsu.yelpSearch.BusinessActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+    </application>
+
+</manifest>

@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <button id ="back" class="btn btn-inverse">Back</button>
+</div>
+<br></br>
+<br></br>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12" id="installbase-table">
+			<table class="table table-hover table-bordered" id="table">
+				<thead>
+					<tr class="error">
+						<th>
+							Serial Number
+						</th>
+						<th>
+							Serial Number Count
+						</th>
+						<th>
+							Instance Name
+						</th>
+						<th>
+							Install Part ID
+						</th>
+						<th>
+							Install Quantity
+						</th>
+						<th>
+							Install Quarter
+						</th>
+						<th>
+							Install Date
+						</th>
+						<th>
+							Site ID
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each CUSTOMERINFO}}
+						{{#if serialNumber}}
+							<tr class="success">
+								<td>
+									{{serialNumber}}
+								</td>
+								<td>
+									{{serialNumberCount}}
+								</td>
+								<td>
+									{{instanceName}}
+								</td>
+								<td>
+									{{installPartId}}
+								</td>
+								<td>
+									{{installQuantity}}
+								</td>
+								<td>
+									{{installQuarter}}
+								</td>
+								<td>
+									{{installDate}}
+								</td>
+								<td>
+									{{siteId}}
+								</td>
+							</tr>
+						{{/if}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

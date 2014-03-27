@@ -1,0 +1,85 @@
+<div class="modal-header">
+    <button id ="back" class="btn btn-inverse">Back</button>
+</div>
+
+<br></br>
+<br></br>
+
+<div class="container-fluid">
+	<div class="span48">
+			<div class="map_canvas">
+				{{!-- MAP DISPLAY DIV --}}
+			</div>
+			<form id = "site-form-div">
+			     <input id="geocomplete" type="text" placeholder="Type in an address" />
+			     <input id="find" type="button" value="find" />
+			      <ul>
+			        <li>Location: <span data-geo="location"></span></li>
+			        <li>Route: <span data-geo="route"></span></li>
+			        <li>Street Number: <span data-geo="street_number"></span></li>
+			        <li>Postal Code: <span data-geo="postal_code"></span></li>
+			        <li>Locality: <span data-geo="locality"></span></li>
+			        <li>Country Code: <span data-geo="country_short"></span></li>
+			        <li>State: <span data-geo="administrative_area_level_1"></span></li>
+			      </ul> 
+		    </form>
+		    <div class="span24 offset2" id="sites-table">
+			<table class="table table-hover table- span12" id="table">
+				<thead>
+					<tr class="error" >
+						<th>
+							Site ID
+						</th>
+						<th>
+							Site Address
+						</th>
+						<th>
+							City
+						</th>
+						<th>
+							State
+						</th>
+						<th>
+							Region
+						</th>
+						<th>
+							Country
+						</th>
+						<th>
+							Zip
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each SITEINFO}}
+						{{#if siteId}}
+							<tr class="success">
+								<td>
+									<a href=#Locations title="Click to view on Google Map">{{siteId}}</a>
+								</td>
+								<td>
+									{{siteAddr}}
+								</td>
+								<td>
+									{{city}}
+								</td>
+								<td>
+									{{state}}
+								</td>
+								<td>
+									{{region}}
+								</td>
+								<td>
+									{{country}}
+								</td>
+								<td>
+									{{zip}}
+								</td>
+							</tr>
+						{{/if}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

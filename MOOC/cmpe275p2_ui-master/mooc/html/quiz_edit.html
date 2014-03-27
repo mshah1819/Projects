@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CMPE 275 Project 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="/assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#"><font color="white" size="2.5pt">Welcome {{ fName }} {{ lName }} [Mooc: {{selectedMooc}}]</font></a>          
+            <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/mooc/home/">Home</a></li>
+              <li><a href="/mooc/list_category">Categories</a></li>
+              <li><a href="/mooc/list_course/">Courses</a></li>
+              <li><a href="/mooc/list_discussion/">Discussions</a></li>
+              <li><a href="/mooc/list_announcement/">Announcements</a></li>
+              <li><a href="/list_quiz">Quizzes</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MOOCS<b class="caret"></b></a>
+                {% if latest_mooc_list %}
+                	<ul class="dropdown-menu">
+				    {% for mooc in latest_mooc_list %}
+        				<li><a href="/mooc/home/?id={{ mooc.id }}">{{ mooc.group }}</a></li>
+    				{% endfor %}
+    				</ul>
+				{% else %}
+    				<p>No MOOCS Registered</p>
+				{% endif %}
+              </li>
+              <li><a href="/mooc/profile/">Profile</a></li>
+              <li><a href="/mooc/logout/">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+      </div>
+      <div class=row>
+      <h5>{{message}}</h5>
+      <form class="form-horizontal" action="/mooc/update_quiz/" method="POST">
+        <input type="hidden" name="quizId" value="{{id}}">
+        <input type="hidden" name="courseId" value="{{courseId}}">
+
+        {% for ques in questions %}
+	    <br><br><label class="control-label">Question&nbsp;&nbsp;&nbsp;&nbsp;</label>  
+        <input type="text" class="input-block-level" style="width:350px;" name="ques{{forloop.counter}}" value="{{ques.question}}">
+	    <br><label class="control-label" for="textarea">Answer options</label><br>
+	    <br><input type="text" class="input-block-level" style="width:250px;" name="ques{{forloop.counter}}.option1" value={{ques.options.0}}>
+	    <br><input type="text" class="input-block-level" style="width:250px;" name="ques{{forloop.counter}}.option2" value={{ques.options.1}}>
+		<br><input type="text" class="input-block-level" style="width:250px;" name="ques{{forloop.counter}}.option3" value={{ques.options.2}}>
+		<br><input type="text" class="input-block-level" style="width:250px;" name="ques{{forloop.counter}}.option4" value={{ques.options.3}}>
+		<br><br>
+		<label class="control-label" for="correctAnswer">Correct Answer&nbsp;&nbsp;&nbsp;&nbsp;</label>  
+		<select name="ques{{forloop.counter}}.correctAnswer" id="correctAnswer">
+			 <option value="option1">Answer 1</option>
+			 <option value="option2">Answer 2</option>
+			 <option value="option3">Answer 3</option>
+			 <option value="option4">Answer 4</option>
+		 </select>
+      	{% endfor %}      
+      	
+	  <br><br><br><button class="btn" type="submit">Update Quiz</button>
+	  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/mooc/list_quiz/"><button class="btn" type="submit">Cancel</button></a>
+	  </form>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Annonymous Group 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/bootstrap-transition.js"></script>
+    <script src="/assets/js/bootstrap-alert.js"></script>
+    <script src="/assets/js/bootstrap-modal.js"></script>
+    <script src="/assets/js/bootstrap-dropdown.js"></script>
+    <script src="/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="/assets/js/bootstrap-tab.js"></script>
+    <script src="/assets/js/bootstrap-tooltip.js"></script>
+    <script src="/assets/js/bootstrap-popover.js"></script>
+    <script src="/assets/js/bootstrap-button.js"></script>
+    <script src="/assets/js/bootstrap-collapse.js"></script>
+    <script src="/assets/js/bootstrap-carousel.js"></script>
+    <script src="/assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

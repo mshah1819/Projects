@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <button id ="back" class="btn btn-inverse">Back</button>
+</div>
+<br></br>
+<br></br>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12" id="contracts-table">
+			<table class="table table-hover table-bordered" id="table">
+				<thead>
+					<tr class="error">
+						<th>
+							Contract ID
+						</th>
+						<th>
+							Contract Description
+						</th>
+						<th>
+							Contract Serial Number
+						</th>
+						<th>
+							Contract Bill To Name
+						</th>
+						<th>
+							Contract Bill To Id
+						</th>
+						<th>
+							Contract Bill Address
+						</th>
+						<th>
+							Contract Bill City
+						</th>
+						<th>
+							Contract Bill State
+						</th>
+						<th>
+							Contract Bill Region
+						</th>
+						<th>
+							Contract Bill Country
+						</th>
+						<th>
+							Contract Bill Zip
+						</th>
+						<th>
+							Contract Bill Start Date
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each CUSTOMERINFO}}
+						{{#if contractId}}
+							<tr class="success">
+								<td>
+									{{contractId}}
+								</td>
+								<td>
+									{{contractDesc}}
+								</td>
+								<td>
+									{{contractSerialNumber}}
+								</td>
+								<td>
+									{{contractBillToName}}
+								</td>
+								<td>
+									{{contractBillToId}}
+								</td>
+								<td>
+									{{contractBillAddr}}
+								</td>
+								<td>
+									{{contractBillCity}}
+								</td>
+								<td>
+									{{contractBillState}}
+								</td>
+								<td>
+									{{contractBillRegion}}
+								</td>
+								<td>
+									{{contractBillCountry}}
+								</td>
+								<td>
+									{{contractBillZip}}
+								</td>
+								<td>
+									{{contractStartDate}}
+								</td>
+							</tr>
+						{{/if}}
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

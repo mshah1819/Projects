@@ -1,0 +1,1995 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services" xmlns:intf="http://services" xmlns:tns1="http://model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model"/>
+   <element name="getUserObject">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserObjectResponse">
+    <complexType>
+     <sequence>
+      <element name="getUserObjectReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signIn">
+    <complexType>
+     <sequence>
+      <element name="username" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signInResponse">
+    <complexType>
+     <sequence>
+      <element name="signInReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listState">
+    <complexType>
+     <sequence>
+      <element name="country" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listStateResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="listStateReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listCountry">
+    <complexType/>
+   </element>
+   <element name="listCountryResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="listCountryReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listCity">
+    <complexType>
+     <sequence>
+      <element name="state" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="listCityResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="listCityReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUp">
+    <complexType>
+     <sequence>
+      <element name="user" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signUpResponse">
+    <complexType>
+     <sequence>
+      <element name="signUpReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="displayUsers">
+    <complexType>
+     <sequence>
+      <element name="preferenceId" type="xsd:int"/>
+      <element name="offset" type="xsd:int"/>
+      <element name="noOfRecords" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="displayUsersResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="displayUsersReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLatestMovies">
+    <complexType/>
+   </element>
+   <element name="getLatestMoviesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getLatestMoviesReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="displayMovies">
+    <complexType>
+     <sequence>
+      <element name="filterAlphabet" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="displayMoviesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="displayMoviesReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addToCart">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="movieCart" type="tns1:MovieCart"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addToCartResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="addToCartReturn" type="tns1:MovieCart"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveCart">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveCartResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="retrieveCartReturn" type="tns1:MovieCart"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveMovieDataForCart">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="cartData" type="tns1:MovieCart"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="retrieveMovieDataForCartResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="retrieveMovieDataForCartReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteFromCart">
+    <complexType>
+     <sequence>
+      <element name="userID" type="xsd:int"/>
+      <element name="movieID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteFromCartResponse">
+    <complexType/>
+   </element>
+   <element name="paymentGatewayCheck">
+    <complexType>
+     <sequence>
+      <element name="user" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="paymentGatewayCheckResponse">
+    <complexType>
+     <sequence>
+      <element name="paymentGatewayCheckReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBalance">
+    <complexType>
+     <sequence>
+      <element name="userID" type="xsd:int"/>
+      <element name="amountToAdd" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBalanceResponse">
+    <complexType/>
+   </element>
+   <element name="closeAllConn">
+    <complexType/>
+   </element>
+   <element name="closeAllConnResponse">
+    <complexType/>
+   </element>
+   <element name="checkOutMovie">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="movie" type="tns1:Movie"/>
+      <element name="user" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkOutMovieResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="checkOutMovieReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="movieCriteriaSearch">
+    <complexType>
+     <sequence>
+      <element name="movie" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="movieCriteriaSearchResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="movieCriteriaSearchReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchMovieCategory">
+    <complexType/>
+   </element>
+   <element name="fetchMovieCategoryResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="fetchMovieCategoryReturn" type="tns1:MovieCategory"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="returnedMovie">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="movie" type="tns1:Movie"/>
+      <element name="user" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="returnedMovieResponse">
+    <complexType>
+     <sequence>
+      <element name="returnedMovieReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserMoviesBought">
+    <complexType>
+     <sequence>
+      <element name="userId" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserMoviesBoughtResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getUserMoviesBoughtReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="userSearchCriteria">
+    <complexType>
+     <sequence>
+      <element name="user" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="userSearchCriteriaResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="userSearchCriteriaReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteUser">
+    <complexType>
+     <sequence>
+      <element name="userID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteUserResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteUserReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="adminInsertMovie">
+    <complexType>
+     <sequence>
+      <element name="movie" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="adminInsertMovieResponse">
+    <complexType>
+     <sequence>
+      <element name="adminInsertMovieReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="adminUpdateMovie">
+    <complexType>
+     <sequence>
+      <element name="movie" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="adminUpdateMovieResponse">
+    <complexType>
+     <sequence>
+      <element name="adminUpdateMovieReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchBillingHistory">
+    <complexType>
+     <sequence>
+      <element name="user" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fetchBillingHistoryResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="fetchBillingHistoryReturn" type="tns1:BillingHistory"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="adminDeleteMovie">
+    <complexType>
+     <sequence>
+      <element name="movie" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="adminDeleteMovieResponse">
+    <complexType>
+     <sequence>
+      <element name="adminDeleteMovieReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="userMovieView">
+    <complexType>
+     <sequence>
+      <element name="movie" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="userMovieViewResponse">
+    <complexType>
+     <sequence>
+      <element name="userMovieViewReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateAvailableCopies">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="movieCrt" type="tns1:MovieCart"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="updateAvailableCopiesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="updateAvailableCopiesReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="testPagination">
+    <complexType>
+     <sequence>
+      <element name="offset" type="xsd:int"/>
+      <element name="noOfRecords" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="testPaginationResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="testPaginationReturn" type="tns1:Movie"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTotalNoOfRecords">
+    <complexType/>
+   </element>
+   <element name="getTotalNoOfRecordsResponse">
+    <complexType>
+     <sequence>
+      <element name="getTotalNoOfRecordsReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="City">
+    <sequence>
+     <element name="cityId" type="xsd:int"/>
+     <element name="cityName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Country">
+    <sequence>
+     <element name="countryId" type="xsd:int"/>
+     <element name="countryName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="State">
+    <sequence>
+     <element name="stateId" type="xsd:int"/>
+     <element name="stateName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Address">
+    <sequence>
+     <element name="addrLine1" nillable="true" type="xsd:string"/>
+     <element name="addrLine2" nillable="true" type="xsd:string"/>
+     <element name="addrLine3" nillable="true" type="xsd:string"/>
+     <element name="addressId" type="xsd:int"/>
+     <element name="city" nillable="true" type="tns1:City"/>
+     <element name="cityId" type="xsd:int"/>
+     <element name="country" nillable="true" type="tns1:Country"/>
+     <element name="countryId" type="xsd:int"/>
+     <element name="state" nillable="true" type="tns1:State"/>
+     <element name="stateId" type="xsd:int"/>
+     <element name="telNo" nillable="true" type="xsd:string"/>
+     <element name="zipCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Payment">
+    <sequence>
+     <element name="cardCvv" nillable="true" type="xsd:string"/>
+     <element name="cardExpDate" nillable="true" type="xsd:string"/>
+     <element name="cardNumFour" nillable="true" type="xsd:string"/>
+     <element name="cardNumOne" nillable="true" type="xsd:string"/>
+     <element name="cardNumThree" nillable="true" type="xsd:string"/>
+     <element name="cardNumTwo" nillable="true" type="xsd:string"/>
+     <element name="cardType" nillable="true" type="xsd:string"/>
+     <element name="nameOnCard" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Preference">
+    <sequence>
+     <element name="preferenceId" type="xsd:int"/>
+     <element name="preferenceType" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Status">
+    <sequence>
+     <element name="statusId" type="xsd:int"/>
+     <element name="statusName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="User">
+    <sequence>
+     <element name="address" nillable="true" type="tns1:Address"/>
+     <element name="addressId" type="xsd:int"/>
+     <element name="displayName" nillable="true" type="xsd:string"/>
+     <element name="dob" nillable="true" type="xsd:string"/>
+     <element name="emailId" nillable="true" type="xsd:string"/>
+     <element name="errorMsg" nillable="true" type="xsd:string"/>
+     <element name="firstName" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="invalidLogins" type="xsd:int"/>
+     <element name="lastLogin" nillable="true" type="xsd:string"/>
+     <element name="lastName" nillable="true" type="xsd:string"/>
+     <element name="lastPwdUpdate" nillable="true" type="xsd:string"/>
+     <element name="loginId" nillable="true" type="xsd:string"/>
+     <element name="membershipId" nillable="true" type="xsd:string"/>
+     <element name="middleName" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="payment" nillable="true" type="tns1:Payment"/>
+     <element name="preference" nillable="true" type="tns1:Preference"/>
+     <element name="preferenceId" type="xsd:int"/>
+     <element name="salutation" nillable="true" type="xsd:string"/>
+     <element name="sex" nillable="true" type="xsd:string"/>
+     <element name="ssnId" nillable="true" type="xsd:string"/>
+     <element name="status" nillable="true" type="tns1:Status"/>
+     <element name="statusId" type="xsd:int"/>
+     <element name="subscriptionFee" type="xsd:float"/>
+     <element name="subscriptionRenewal" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="MovieCategory">
+    <sequence>
+     <element name="movieCategory" nillable="true" type="xsd:string"/>
+     <element name="movieCategoryId" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="Movie">
+    <sequence>
+     <element name="availableCopies" type="xsd:int"/>
+     <element name="errorMsg" nillable="true" type="xsd:string"/>
+     <element name="movieCategory" nillable="true" type="tns1:MovieCategory"/>
+     <element name="movieCategoryId" type="xsd:int"/>
+     <element name="movieId" type="xsd:int"/>
+     <element name="movieName" nillable="true" type="xsd:string"/>
+     <element name="prodBanner" nillable="true" type="xsd:string"/>
+     <element name="releaseDate" nillable="true" type="xsd:string"/>
+     <element name="rentAmount" type="xsd:float"/>
+     <element name="totalCopies" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="MovieCart">
+    <sequence>
+     <element name="addedOn" nillable="true" type="xsd:string"/>
+     <element name="cartStatus" nillable="true" type="xsd:string"/>
+     <element name="errorMsg" nillable="true" type="xsd:string"/>
+     <element name="movieId" type="xsd:int"/>
+     <element name="qty" type="xsd:int"/>
+     <element name="userId" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="BillingHistory">
+    <sequence>
+     <element name="movieAddedOn" nillable="true" type="xsd:string"/>
+     <element name="movieAmountPaid" type="xsd:float"/>
+     <element name="movieName" nillable="true" type="xsd:string"/>
+     <element name="movieState" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="deleteFromCartRequest">
+
+      <wsdl:part element="impl:deleteFromCart" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="returnedMovieResponse">
+
+      <wsdl:part element="impl:returnedMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchBillingHistoryResponse">
+
+      <wsdl:part element="impl:fetchBillingHistoryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayMoviesRequest">
+
+      <wsdl:part element="impl:displayMovies" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveCartResponse">
+
+      <wsdl:part element="impl:retrieveCartResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listCountryRequest">
+
+      <wsdl:part element="impl:listCountry" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserMoviesBoughtRequest">
+
+      <wsdl:part element="impl:getUserMoviesBought" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchMovieCategoryRequest">
+
+      <wsdl:part element="impl:fetchMovieCategory" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchBillingHistoryRequest">
+
+      <wsdl:part element="impl:fetchBillingHistory" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="paymentGatewayCheckRequest">
+
+      <wsdl:part element="impl:paymentGatewayCheck" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkOutMovieRequest">
+
+      <wsdl:part element="impl:checkOutMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkOutMovieResponse">
+
+      <wsdl:part element="impl:checkOutMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userMovieViewResponse">
+
+      <wsdl:part element="impl:userMovieViewResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBalanceResponse">
+
+      <wsdl:part element="impl:addBalanceResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="fetchMovieCategoryResponse">
+
+      <wsdl:part element="impl:fetchMovieCategoryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userMovieViewRequest">
+
+      <wsdl:part element="impl:userMovieView" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLatestMoviesRequest">
+
+      <wsdl:part element="impl:getLatestMovies" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="adminUpdateMovieResponse">
+
+      <wsdl:part element="impl:adminUpdateMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserObjectResponse">
+
+      <wsdl:part element="impl:getUserObjectResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listCityResponse">
+
+      <wsdl:part element="impl:listCityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="paymentGatewayCheckResponse">
+
+      <wsdl:part element="impl:paymentGatewayCheckResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listStateRequest">
+
+      <wsdl:part element="impl:listState" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTotalNoOfRecordsResponse">
+
+      <wsdl:part element="impl:getTotalNoOfRecordsResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listCityRequest">
+
+      <wsdl:part element="impl:listCity" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserRequest">
+
+      <wsdl:part element="impl:deleteUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="closeAllConnRequest">
+
+      <wsdl:part element="impl:closeAllConn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testPaginationResponse">
+
+      <wsdl:part element="impl:testPaginationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateAvailableCopiesRequest">
+
+      <wsdl:part element="impl:updateAvailableCopies" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveMovieDataForCartResponse">
+
+      <wsdl:part element="impl:retrieveMovieDataForCartResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listCountryResponse">
+
+      <wsdl:part element="impl:listCountryResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="adminDeleteMovieRequest">
+
+      <wsdl:part element="impl:adminDeleteMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="movieCriteriaSearchRequest">
+
+      <wsdl:part element="impl:movieCriteriaSearch" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userSearchCriteriaRequest">
+
+      <wsdl:part element="impl:userSearchCriteria" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addToCartRequest">
+
+      <wsdl:part element="impl:addToCart" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getTotalNoOfRecordsRequest">
+
+      <wsdl:part element="impl:getTotalNoOfRecords" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="adminDeleteMovieResponse">
+
+      <wsdl:part element="impl:adminDeleteMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserObjectRequest">
+
+      <wsdl:part element="impl:getUserObject" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteUserResponse">
+
+      <wsdl:part element="impl:deleteUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testPaginationRequest">
+
+      <wsdl:part element="impl:testPagination" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayMoviesResponse">
+
+      <wsdl:part element="impl:displayMoviesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBalanceRequest">
+
+      <wsdl:part element="impl:addBalance" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="adminUpdateMovieRequest">
+
+      <wsdl:part element="impl:adminUpdateMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="closeAllConnResponse">
+
+      <wsdl:part element="impl:closeAllConnResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLatestMoviesResponse">
+
+      <wsdl:part element="impl:getLatestMoviesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteFromCartResponse">
+
+      <wsdl:part element="impl:deleteFromCartResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpResponse">
+
+      <wsdl:part element="impl:signUpResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="userSearchCriteriaResponse">
+
+      <wsdl:part element="impl:userSearchCriteriaResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayUsersRequest">
+
+      <wsdl:part element="impl:displayUsers" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signInResponse">
+
+      <wsdl:part element="impl:signInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signUpRequest">
+
+      <wsdl:part element="impl:signUp" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="movieCriteriaSearchResponse">
+
+      <wsdl:part element="impl:movieCriteriaSearchResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="adminInsertMovieRequest">
+
+      <wsdl:part element="impl:adminInsertMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="returnedMovieRequest">
+
+      <wsdl:part element="impl:returnedMovie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveCartRequest">
+
+      <wsdl:part element="impl:retrieveCart" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="displayUsersResponse">
+
+      <wsdl:part element="impl:displayUsersResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="signInRequest">
+
+      <wsdl:part element="impl:signIn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserMoviesBoughtResponse">
+
+      <wsdl:part element="impl:getUserMoviesBoughtResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="adminInsertMovieResponse">
+
+      <wsdl:part element="impl:adminInsertMovieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveMovieDataForCartRequest">
+
+      <wsdl:part element="impl:retrieveMovieDataForCart" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="updateAvailableCopiesResponse">
+
+      <wsdl:part element="impl:updateAvailableCopiesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="listStateResponse">
+
+      <wsdl:part element="impl:listStateResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addToCartResponse">
+
+      <wsdl:part element="impl:addToCartResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Service">
+
+      <wsdl:operation name="getUserObject">
+
+         <wsdl:input message="impl:getUserObjectRequest" name="getUserObjectRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserObjectResponse" name="getUserObjectResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signIn">
+
+         <wsdl:input message="impl:signInRequest" name="signInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signInResponse" name="signInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listState">
+
+         <wsdl:input message="impl:listStateRequest" name="listStateRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listStateResponse" name="listStateResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listCountry">
+
+         <wsdl:input message="impl:listCountryRequest" name="listCountryRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listCountryResponse" name="listCountryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listCity">
+
+         <wsdl:input message="impl:listCityRequest" name="listCityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:listCityResponse" name="listCityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdl:input message="impl:signUpRequest" name="signUpRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:signUpResponse" name="signUpResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayUsers">
+
+         <wsdl:input message="impl:displayUsersRequest" name="displayUsersRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:displayUsersResponse" name="displayUsersResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLatestMovies">
+
+         <wsdl:input message="impl:getLatestMoviesRequest" name="getLatestMoviesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getLatestMoviesResponse" name="getLatestMoviesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayMovies">
+
+         <wsdl:input message="impl:displayMoviesRequest" name="displayMoviesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:displayMoviesResponse" name="displayMoviesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addToCart">
+
+         <wsdl:input message="impl:addToCartRequest" name="addToCartRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addToCartResponse" name="addToCartResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveCart">
+
+         <wsdl:input message="impl:retrieveCartRequest" name="retrieveCartRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retrieveCartResponse" name="retrieveCartResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveMovieDataForCart">
+
+         <wsdl:input message="impl:retrieveMovieDataForCartRequest" name="retrieveMovieDataForCartRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:retrieveMovieDataForCartResponse" name="retrieveMovieDataForCartResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteFromCart">
+
+         <wsdl:input message="impl:deleteFromCartRequest" name="deleteFromCartRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteFromCartResponse" name="deleteFromCartResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="paymentGatewayCheck">
+
+         <wsdl:input message="impl:paymentGatewayCheckRequest" name="paymentGatewayCheckRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:paymentGatewayCheckResponse" name="paymentGatewayCheckResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBalance">
+
+         <wsdl:input message="impl:addBalanceRequest" name="addBalanceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addBalanceResponse" name="addBalanceResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="closeAllConn">
+
+         <wsdl:input message="impl:closeAllConnRequest" name="closeAllConnRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:closeAllConnResponse" name="closeAllConnResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkOutMovie">
+
+         <wsdl:input message="impl:checkOutMovieRequest" name="checkOutMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkOutMovieResponse" name="checkOutMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="movieCriteriaSearch">
+
+         <wsdl:input message="impl:movieCriteriaSearchRequest" name="movieCriteriaSearchRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:movieCriteriaSearchResponse" name="movieCriteriaSearchResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchMovieCategory">
+
+         <wsdl:input message="impl:fetchMovieCategoryRequest" name="fetchMovieCategoryRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:fetchMovieCategoryResponse" name="fetchMovieCategoryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="returnedMovie">
+
+         <wsdl:input message="impl:returnedMovieRequest" name="returnedMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:returnedMovieResponse" name="returnedMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserMoviesBought">
+
+         <wsdl:input message="impl:getUserMoviesBoughtRequest" name="getUserMoviesBoughtRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserMoviesBoughtResponse" name="getUserMoviesBoughtResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userSearchCriteria">
+
+         <wsdl:input message="impl:userSearchCriteriaRequest" name="userSearchCriteriaRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:userSearchCriteriaResponse" name="userSearchCriteriaResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdl:input message="impl:deleteUserRequest" name="deleteUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteUserResponse" name="deleteUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="adminInsertMovie">
+
+         <wsdl:input message="impl:adminInsertMovieRequest" name="adminInsertMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:adminInsertMovieResponse" name="adminInsertMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="adminUpdateMovie">
+
+         <wsdl:input message="impl:adminUpdateMovieRequest" name="adminUpdateMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:adminUpdateMovieResponse" name="adminUpdateMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchBillingHistory">
+
+         <wsdl:input message="impl:fetchBillingHistoryRequest" name="fetchBillingHistoryRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:fetchBillingHistoryResponse" name="fetchBillingHistoryResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="adminDeleteMovie">
+
+         <wsdl:input message="impl:adminDeleteMovieRequest" name="adminDeleteMovieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:adminDeleteMovieResponse" name="adminDeleteMovieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userMovieView">
+
+         <wsdl:input message="impl:userMovieViewRequest" name="userMovieViewRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:userMovieViewResponse" name="userMovieViewResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateAvailableCopies">
+
+         <wsdl:input message="impl:updateAvailableCopiesRequest" name="updateAvailableCopiesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:updateAvailableCopiesResponse" name="updateAvailableCopiesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="testPagination">
+
+         <wsdl:input message="impl:testPaginationRequest" name="testPaginationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:testPaginationResponse" name="testPaginationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTotalNoOfRecords">
+
+         <wsdl:input message="impl:getTotalNoOfRecordsRequest" name="getTotalNoOfRecordsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getTotalNoOfRecordsResponse" name="getTotalNoOfRecordsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServiceSoapBinding" type="impl:Service">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getUserObject">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserObjectRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserObjectResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listState">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listStateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listStateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listCountry">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listCountryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listCountryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listCity">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listCityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listCityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signUp">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signUpRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signUpResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayUsers">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="displayUsersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="displayUsersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLatestMovies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getLatestMoviesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLatestMoviesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="displayMovies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="displayMoviesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="displayMoviesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addToCart">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addToCartRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addToCartResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveCart">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveCartRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveCartResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveMovieDataForCart">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveMovieDataForCartRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveMovieDataForCartResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteFromCart">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteFromCartRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteFromCartResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="paymentGatewayCheck">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="paymentGatewayCheckRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="paymentGatewayCheckResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBalance">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addBalanceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addBalanceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="closeAllConn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="closeAllConnRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="closeAllConnResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="checkOutMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkOutMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkOutMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="movieCriteriaSearch">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="movieCriteriaSearchRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="movieCriteriaSearchResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchMovieCategory">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="fetchMovieCategoryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="fetchMovieCategoryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="returnedMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="returnedMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="returnedMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getUserMoviesBought">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserMoviesBoughtRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserMoviesBoughtResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userSearchCriteria">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="userSearchCriteriaRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="userSearchCriteriaResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="adminInsertMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="adminInsertMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="adminInsertMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="adminUpdateMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="adminUpdateMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="adminUpdateMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="fetchBillingHistory">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="fetchBillingHistoryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="fetchBillingHistoryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="adminDeleteMovie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="adminDeleteMovieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="adminDeleteMovieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="userMovieView">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="userMovieViewRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="userMovieViewResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="updateAvailableCopies">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="updateAvailableCopiesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="updateAvailableCopiesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="testPagination">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testPaginationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testPaginationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTotalNoOfRecords">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTotalNoOfRecordsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTotalNoOfRecordsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServiceService">
+
+      <wsdl:port binding="impl:ServiceSoapBinding" name="Service">
+
+         <wsdlsoap:address location="http://localhost:8080/CMPE273VideoLibrary/services/Service"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
