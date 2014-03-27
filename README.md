@@ -5,15 +5,23 @@ Manan Shah
 Cell: (408) - 207 - 2723 | Email: mshah1819@gmail.com| LinkedIn: www.linkedin.com/in/mshah18
 
 PROJECTS:
+
 •	University Recommendation System – an Open API system
+
 •	Developed open API system on which other web & mobile system can be developed.
+
 •	Demonstrated the use of open API by developing web-based university recommendation system.
+
 •	It would have a data collection tool, data mining engine & a visualization module. 
+
 •	Technologies Used: Java, Spring framework, REST Web Service, Mongo DB.  Twitter BootStrap3, Backbone.js, MVC Architecture  
 
 •	LetsBuy-A Multitenant Solution
+
 •	A multitenant solution for people to buy clothes & accessories from different brands.
+
 •	Implement multitenant data model Shared Database, Custom Extensions.
+
 •	Five clothing brands integrated together to sell common products as well as individual featured items.
 •	Individual featured products include specialties of each brand like belts, watches, sunglasses, etc.
 •	Technologies Used: RESTful Web Service, Java Spring Framework, MySQL and Maven.
